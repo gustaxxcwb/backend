@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somador de 5 Números</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background-color: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; }
+        h2 { color: #333; font-size: 1.2rem; }
+        input { width: 100%; padding: 8px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #218838; }
+        #resultado { margin-top: 20px; font-weight: bold; color: #007bff; text-align: center; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Somar 5 Números</h2>
+    <p>Insira os valores abaixo:</p>
+    <input type="number" class="num" placeholder="1º número">
+    <input type="number" class="num" placeholder="2º número">
+    <input type="number" class="num" placeholder="3º número">
+    <input type="number" class="num" placeholder="4º número">
+    <input type="number" class="num" placeholder="5º número">
+    
+    <button onclick="calcularSoma()">Calcular Soma</button>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function calcularSoma() {
+        // Seleciona todos os campos de input com a classe 'num'
+        const inputs = document.querySelectorAll('.num');
+        let soma = 0;
+        let todosPreenchidos = true;
+
+        inputs.forEach(input => {
+            const valor = parseFloat(input.value);
+            
+            if (isNaN(valor)) {
+                todosPreenchidos = false;
+            } else {
+                soma += valor;
+            }
+        });
+
+        const divResultado = document.getElementById('resultado');
+
+        if (!todosPreenchidos) {
+            divResultado.style.color = "red";
+            divResultado.innerText = "Por favor, preencha os 5 campos!";
+        } else {
+            divResultado.style.color = "#007bff";
+            divResultado.innerText = `A soma total é: ${soma}`;
+        }
+    }
+</script>
+
+</body>
+</html>
